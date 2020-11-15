@@ -7,7 +7,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -80,6 +79,27 @@ class CalculatePaymentTest {
         tripParts.get("0").setStopId("Stop3");
         Map<String, CompleteTrip> completeTripStop3 = CalculatePayment.getTripType(tripParts);
         assertEquals(7.3, completeTripStop3.get("1").getChargeAmount());
+    }
+
+    @Test
+    public void shouldCalculateValidTrip(){
+        tripParts.get("0").setTapType("ON");
+        tripParts.get("1").setTapType("OFF");
+
+        tripParts.get("0").setStopId("Stop1");
+        tripParts.get("1").setStopId("Stop2");
+        Map<String, CompleteTrip> completeTripStop1Stop2 = CalculatePayment.getTripType(tripParts);
+        assertEquals(3.25, completeTripStop1Stop2.get("1").getChargeAmount());
+
+        tripParts.get("1").setStopId("Stop3");
+        Map<String, CompleteTrip> completeTripStop1Stop3 = CalculatePayment.getTripType(tripParts);
+        assertEquals(7.3, completeTripStop1Stop3.get("1").getChargeAmount());
+
+        tripParts.get("0").setStopId("Stop2");
+        tripParts.get("1").setStopId("Stop3");
+
+        Map<String, CompleteTrip> completeTripStop2Stop3 = CalculatePayment.getTripType(tripParts);
+        assertEquals(5.5, completeTripStop2Stop3.get("1").getChargeAmount());
     }
 
 }

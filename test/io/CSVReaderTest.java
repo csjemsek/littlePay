@@ -57,28 +57,28 @@ class CSVReaderTest {
     public void shouldReadCorrectInputFileValues() {
 
         //BusId
-        assertEquals(first.getBusId(), "Bus37");
-        assertEquals(second.getBusId(), "Bus37");
+        assertEquals("Bus37", first.getBusId());
+        assertEquals("Bus37", second.getBusId());
 
         //CompanyId
-        assertEquals(first.getCompanyId(), "Company1");
-        assertEquals(second.getCompanyId(), "Company1");
+        assertEquals("Company1", first.getCompanyId());
+        assertEquals("Company1", second.getCompanyId());
 
         //Id
-        assertEquals(first.getiD(), 1);
-        assertEquals(second.getiD(), 2);
+        assertEquals(1, first.getiD());
+        assertEquals(2, second.getiD());
 
         //Pan
-        assertEquals(first.getPan(), "5500005555555559");
-        assertEquals(second.getPan(), "5500005555555559");
+        assertEquals("5500005555555559", first.getPan());
+        assertEquals("5500005555555559", second.getPan());
 
         //StopId
-        assertEquals(first.getStopId(), "Stop1");
-        assertEquals(second.getStopId(), "Stop2");
+        assertEquals("Stop1", first.getStopId());
+        assertEquals("Stop2", second.getStopId());
 
         //TapType
-        assertEquals(first.getTapType(), "ON");
-        assertEquals(second.getTapType(), "OFF");
+        assertEquals("ON", first.getTapType());
+        assertEquals("OFF", second.getTapType());
 
     }
 
