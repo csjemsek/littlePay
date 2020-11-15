@@ -1,8 +1,10 @@
 package application;
 
 import io.CSVReader;
+import model.CompleteTrip;
 import model.TripPart;
 import payment.CalculatePayment;
+import io.OutputTrips;
 
 import java.util.Map;
 
@@ -15,6 +17,7 @@ public class Main {
         }
         CSVReader csvReader = new CSVReader();
         Map<String , TripPart> tripParts = csvReader.read(args[0]);
-        CalculatePayment.getTripType(tripParts);
+        Map<String, CompleteTrip> completeTrips = CalculatePayment.getTripType(tripParts);
+        OutputTrips.printOutput(completeTrips);
     }
 }
