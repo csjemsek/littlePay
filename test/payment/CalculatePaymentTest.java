@@ -16,12 +16,10 @@ class CalculatePaymentTest {
     Map<String , TripPart> tripParts = csvReader.read("input.csv");
     @BeforeEach
     public void setup() {
-
+        csvReader = new CSVReader();
+        tripParts = csvReader.read("input.csv");
     }
 
-    @Test
-    void getTripType() {
-    }
 
     @Test
     public void shouldHaveCompleteStatusWhenValid(){
@@ -59,47 +57,6 @@ class CalculatePaymentTest {
         Map<String, CompleteTrip> completeTripFive = CalculatePayment.getTripType(tripParts);
 
         assertEquals(5.0, completeTripFive.get("1").getDuration());
-    }
-
-    @Test
-    public void shouldCalculateMaxPriceInvalidTripStop1(){
-        tripParts.get("0").setTapType("ON");
-        tripParts.get("1").setTapType("ON");
-
-        tripParts.get("0").setStopId("Stop1");
-
-        Map<String, CompleteTrip> completeTripStop1 = CalculatePayment.getTripType(tripParts);
-        assertEquals(7.3, completeTripStop1.get("1").getChargeAmount());
-
-        tripParts.get("0").setStopId("Stop2");
-        Map<String, CompleteTrip> completeTripStop2 = CalculatePayment.getTripType(tripParts);
-
-        assertEquals(5.5, completeTripStop2.get("1").getChargeAmount());
-
-        tripParts.get("0").setStopId("Stop3");
-        Map<String, CompleteTrip> completeTripStop3 = CalculatePayment.getTripType(tripParts);
-        assertEquals(7.3, completeTripStop3.get("1").getChargeAmount());
-    }
-
-    @Test
-    public void shouldCalculateValidTrip(){
-        tripParts.get("0").setTapType("ON");
-        tripParts.get("1").setTapType("OFF");
-
-        tripParts.get("0").setStopId("Stop1");
-        tripParts.get("1").setStopId("Stop2");
-        Map<String, CompleteTrip> completeTripStop1Stop2 = CalculatePayment.getTripType(tripParts);
-        assertEquals(3.25, completeTripStop1Stop2.get("1").getChargeAmount());
-
-        tripParts.get("1").setStopId("Stop3");
-        Map<String, CompleteTrip> completeTripStop1Stop3 = CalculatePayment.getTripType(tripParts);
-        assertEquals(7.3, completeTripStop1Stop3.get("1").getChargeAmount());
-
-        tripParts.get("0").setStopId("Stop2");
-        tripParts.get("1").setStopId("Stop3");
-
-        Map<String, CompleteTrip> completeTripStop2Stop3 = CalculatePayment.getTripType(tripParts);
-        assertEquals(5.5, completeTripStop2Stop3.get("1").getChargeAmount());
     }
 
 }

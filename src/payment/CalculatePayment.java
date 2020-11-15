@@ -12,10 +12,8 @@ import java.util.Map;
 
 import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
 
-//TODO : need to be able to compare stops
 public class CalculatePayment {
 
-    //TODO : refactor into smaller methods
     public static Map<String, CompleteTrip> getTripType(Map<String , TripPart> trips) {
         LOGGER.info("commencing cost calculation");
 
@@ -31,7 +29,6 @@ public class CalculatePayment {
                 CompleteTrip completeTrip = createCompleteTrip(tripPart, nextTripPart);
                 completeTrips.put(Integer.toString(tripPart.getiD()), completeTrip);
             }
-            //iterator.remove();
         }
         return completeTrips;
     }
@@ -85,7 +82,6 @@ public class CalculatePayment {
         double maxFare = 0.0;
         String stop = tripPart.getStopId();
 
-        //TODO : make this an enum
         switch(stop)
         {
             case "Stop1":

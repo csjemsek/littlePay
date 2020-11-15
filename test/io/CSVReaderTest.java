@@ -52,36 +52,6 @@ class CSVReaderTest {
 
     }
 
-
-    @Test
-    public void shouldReadCorrectInputFileValues() {
-
-        //BusId
-        assertEquals("Bus37", first.getBusId());
-        assertEquals("Bus37", second.getBusId());
-
-        //CompanyId
-        assertEquals("Company1", first.getCompanyId());
-        assertEquals("Company1", second.getCompanyId());
-
-        //Id
-        assertEquals(1, first.getiD());
-        assertEquals(2, second.getiD());
-
-        //Pan
-        assertEquals("5500005555555559", first.getPan());
-        assertEquals("5500005555555559", second.getPan());
-
-        //StopId
-        assertEquals("Stop1", first.getStopId());
-        assertEquals("Stop2", second.getStopId());
-
-        //TapType
-        assertEquals("ON", first.getTapType());
-        assertEquals("OFF", second.getTapType());
-
-    }
-
     @Test
     public void shouldParseDate() {
         tripParts.forEach((k,v) -> assertNotNull(v.getDateTimeUTC().getSecond()));

@@ -22,7 +22,6 @@ public class StopPair {
         this.secondStop = secondStop;
     }
 
-    //TODO : make this an enum
     public double getPairing(String firstStop, String secondStop) {
         String pair = firstStop + secondStop;
         double fare = 0.0;
@@ -32,9 +31,7 @@ public class StopPair {
         }
 
         if (pair.contains("1") && pair.contains("2")){
-            LOGGER.info("stop one and two");
             fare += 3.25;
-            LOGGER.info("fare for one and two: " + fare);
         }
 
         if (pair.contains("2") && pair.contains("3")) {
@@ -45,7 +42,6 @@ public class StopPair {
             fare += 7.30;
         }
 
-        LOGGER.info("fare: " + fare);
         return fare;
     }
 

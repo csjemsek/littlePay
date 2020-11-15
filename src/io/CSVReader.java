@@ -11,8 +11,6 @@ import java.util.HashMap;
 
 public class CSVReader {
 
-
-    //TODO : import all the tripLines and then instantiate the trip jobs separately
     public HashMap<String , TripPart> read(String inputFileName) {
 
         HashMap<String , TripPart> trips = new HashMap<>();
@@ -31,8 +29,6 @@ public class CSVReader {
 
                 String[] tripLines = line.split(cvsSplitBy);
 
-                //TODO : use a for loop
-                //Add the values into an object
                 tripPart.setiD(Integer.parseInt(tripLines[0]));
                 tripPart.setDateTimeUTC(stringToDate(tripLines[1]));
                 tripPart.setTapType(tripLines[2]);

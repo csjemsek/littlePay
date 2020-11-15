@@ -38,8 +38,6 @@ public class OutputTrips {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        completeTrips.forEach((k, v) -> System.out.println((k + ":" + v.getChargeAmount())));
     }
 
 }
